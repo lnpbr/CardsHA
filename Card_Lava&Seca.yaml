@@ -1,0 +1,279 @@
+# Para usar esse card, será necessário instalar o custom:button-card, que pode ser obtido aqui: https://github.com/custom-cards/button-card ou através do HACS.
+# Você deverá criar uma imagem e colocar em /config/www do seu Home Assistant, bem como alterar o nome neste código (última linha). A imagem usada neste card tem o tamanho de 960x720
+# Depois, é só alterar as entidades correspondentes a sua Lava&Seca e ajustar as posições, caso necessário.
+
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    color_type: label-card
+    color: rgb(37,40,42)
+    name: LAVA&SECA
+    styles:
+      card:
+        - height: 30px
+        - font-size: 16px
+        - font-weight: bold
+  - type: picture-elements
+    elements:
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: true
+        show_name: true
+        name: Tempo Restante
+        layout: icon_name_state2nd
+        size: 50%
+        entity: sensor.lava_seca_remaining_time
+        color_type: card
+        style:
+          top: 28%
+          left: 80%
+        styles:
+          card:
+            - width: 140px
+            - height: 45px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - background: rgba(50,50,50,0.3)
+            - border: 0px
+        state:
+          - value: unavailable
+            styles:
+              card:
+                - background-color: rgb(15,15,15)
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: true
+        show_name: true
+        name: Estado Atual
+        layout: icon_name_state2nd
+        size: 50%
+        entity: sensor.lava_seca_run_state
+        color_type: card
+        style:
+          top: 83%
+          left: 38%
+        styles:
+          card:
+            - width: 150px
+            - height: 40px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - background: rgba(50,50,50,0.7)
+            - border: 0px
+        state:
+          - value: unavailable
+            styles:
+              card:
+                - background-color: rgb(15,15,15)
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: true
+        show_name: true
+        name: Tipo Ciclo
+        icon: mdi:washing-machine
+        layout: icon_name_state2nd
+        size: 50%
+        entity: sensor.lava_seca_current_course
+        color_type: card
+        style:
+          top: 10%
+          left: 80%
+        styles:
+          card:
+            - width: 140px
+            - height: 45px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - background: rgba(50,50,50,0.3)
+            - border: 0px
+        state:
+          - value: unavailable
+            styles:
+              card:
+                - background-color: rgb(15,15,15)
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: false
+        show_name: false
+        name: Power
+        size: 50%
+        icon: mdi:power
+        entity: sensor.lava_seca
+        color_type: card
+        style:
+          top: 8%
+          left: 6%
+        styles:
+          card:
+            - width: 40px
+            - height: 40px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - border-radius: 100%
+            - border: 0px
+        state:
+          - value: unavailable
+            icon: mdi:power
+            styles:
+              icon:
+                - color: rgb(15,15,15)
+              card:
+                - background: rgba(50,50,50,0.7)
+          - value: 'off'
+            icon: mdi:power
+            styles:
+              icon:
+                - color: rgb(255,255,255)
+              card:
+                - background: rgba(50,50,50,0.7)
+          - value: 'on'
+            icon: mdi:power
+            styles:
+              icon:
+                - color: rgb(0,150,0,1)
+              card:
+                - background: rgba(0,30,0,0.7)
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: true
+        show_name: true
+        name: Temp Água
+        layout: icon_name_state2nd
+        size: 50%
+        entity: sensor.lava_seca_water_temp
+        color_type: card
+        style:
+          top: 46%
+          left: 80%
+        styles:
+          card:
+            - width: 140px
+            - height: 45px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - background: rgba(50,50,50,0.3)
+            - border: 0px
+        state:
+          - value: unavailable
+            styles:
+              card:
+                - background-color: rgb(15,15,15)
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: true
+        show_name: true
+        name: Erro
+        layout: icon_name_state2nd
+        size: 50%
+        entity: binary_sensor.lava_seca_error_state
+        color_type: card
+        style:
+          top: 65%
+          left: 80%
+        styles:
+          card:
+            - width: 140px
+            - height: 45px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - border: 0px
+        state:
+          - value: unavailable
+            styles:
+              card:
+                - background-color: rgb(15,15,15)
+          - value: 'on'
+            styles:
+              card:
+                - background-color: rgb(100,0,0,0.7)
+          - value: 'off'
+            styles:
+              card:
+                - background-color: rgb(0,40,0,0.7)
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: false
+        show_name: false
+        name: Trava Porta
+        size: 50%
+        entity: binary_sensor.lava_seca_door_lock
+        color_type: card
+        style:
+          top: 44%
+          left: 38%
+        styles:
+          card:
+            - width: 100px
+            - height: 100px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - border-radius: 100%
+            - background: rgba(0,0,0,0)
+            - border: 0px
+        state:
+          - value: unavailable
+            icon: mdi:lock
+            styles:
+              icon:
+                - color: rgb(15,15,15)
+          - value: 'on'
+            icon: mdi:lock
+            styles:
+              icon:
+                - color: rgb(255,0,0)
+          - value: 'off'
+            icon: mdi:lock-open
+            styles:
+              icon:
+                - color: rgb(0,150,0,1)
+      - type: custom:button-card
+        tap_action:
+          action: more-info
+        show_state: true
+        layout: icon_name_state2nd
+        show_name: true
+        name: Ciclo Completo
+        size: 50%
+        entity: binary_sensor.lava_seca_wash_completed
+        color_type: card
+        style:
+          top: 86%
+          left: 80%
+        styles:
+          card:
+            - width: 140px
+            - height: 60px
+            - font-size: 10px
+            - font-weight: bold
+            - color: white
+            - border: 0px
+          state:
+            - font-size: 15px
+        state:
+          - value: unavailable
+            styles:
+              card:
+                - background-color: rgb(15,15,15)
+          - value: 'off'
+            styles:
+              card:
+                - background-color: rgb(100,0,0,0.3)
+          - value: 'on'
+            styles:
+              card:
+                - background-color: rgb(0,40,0,0.5)
+    image: /local/lgvc_fundo.png
